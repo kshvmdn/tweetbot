@@ -16,7 +16,7 @@ class TwitterBot:
             if mention_text in mention.text.lower():
                 self.tweet(message.format(mention.user.screen_name), mention.id)
                 self.api.create_favorite(mention.id)
-                print('responded to {0}'.format(mention.user.screen_name))
+                print('Responded to {0}.'.format(mention.user.screen_name))
 
 if __name__ == "__main__":
     user = TwitterBot()
