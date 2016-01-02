@@ -9,7 +9,7 @@ scheduler = BackgroundScheduler()
 
 def say_thanks():
     bot = TwitterBot()
-    bot.respond('test', '{0} hi!')
+    bot.respond('happy birthday', '{0} thanks!')
     print(datetime.datetime.now())
     time.sleep(20)
 
