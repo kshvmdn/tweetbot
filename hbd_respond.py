@@ -1,10 +1,9 @@
-from twitterbot import TwitterBot
-
 import datetime
-import time
-from apscheduler.schedulers.background import BackgroundScheduler
 
-scheduler = BackgroundScheduler()
+from twitterbot import TwitterBot
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+user = TwitterBot()
 
 
 def say_thanks():
@@ -14,5 +13,7 @@ def say_thanks():
     print('Finished running at {0}'.format(datetime.datetime.now()))
     time.sleep(20)
 
-# run once a minute
-scheduler.configure(say_thanks(), minute='0-1')
+# run once every 2 minutes
+scheduler = BlockingScheduler()
+scheduler.add_job(say_thanks, 'interval', minutes=2)
+scheduler.start()
