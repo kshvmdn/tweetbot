@@ -12,7 +12,7 @@ class TwitterBot:
         self.api.update_status(status=message, mention_id=mention_id)
 
     def respond(self, mention_text, message):
-        for mention in self.api.mentions_timeline(count=5):
+        for mention in self.api.mentions_timeline(count=1):
             if mention_text in mention.text.lower():
                 self.tweet(message.format(mention.user.screen_name), mention.id)
                 self.api.create_favorite(mention.id)
@@ -20,4 +20,4 @@ class TwitterBot:
 
 if __name__ == "__main__":
     user = TwitterBot()
-    user.respond('happy birthday', '{0} thanks!')
+    user.respond('hi', '{0} hey buddy!')
