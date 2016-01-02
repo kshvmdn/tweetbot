@@ -8,10 +8,8 @@ user = TwitterBot()
 
 def say_thanks():
     print('Running say_thanks.')
-    bot = TwitterBot()
-    bot.respond('happy birthday', '{0} thanks!')
+    user.respond('happy birthday!', '@{0} thanks!')
     print('Finished running at {0}'.format(datetime.datetime.now()))
-    time.sleep(20)
 
 # run once every 2 minutes
 scheduler = BlockingScheduler()
