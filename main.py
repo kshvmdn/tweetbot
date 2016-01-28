@@ -1,7 +1,7 @@
 import datetime
 import argparse
 
-from keys import twtr_auth as twitter
+from auth import twitter_auth as auth
 from twitterbot import TwitterBot
 from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -12,15 +12,22 @@ parser.add_argument('-r', '--response', metavar='', default='HANDLE thanks!',
                     help='response text (use HANDLE for user handle)')
 args = parser.parse_args()
 
-bot = TwitterBot(twitter, args.listen, args.response.replace('HANDLE', '@{}'))
+bot = TwitterBot(auth, args.listen, args.response.replace('HANDLE', '@{}'))
+
+
+def respond():
+    print(' Running...')
+    bot.respond_to_mention()
+    print(' Finished running at {}'.format(datetime.datetime.now()))
 
 
 def main():
-    print('Running...')
-    bot.respond_to_mention()
-    print('Finished running at {}'.format(datetime.datetime.now()))
+    print('Starting bot...')
 
-# run once every 2 minutes
-scheduler = BlockingScheduler()
-scheduler.add_job(main, 'interval', minutes=2)
-scheduler.start()
+    # run once every minute
+    scheduler = BlockingScheduler()
+    scheduler.add_job(respond, 'interval', minutes=1)
+    scheduler.start()
+
+if __name__ == '__main__':
+    main()
