@@ -16,7 +16,7 @@ class TwitterBot:
     def tweet(self, message, mention_id=None):
         self.api.update_status(status=message, in_reply_to_status_id=mention_id)
 
-    def respond_to_mention(self):
+    def reply_to_mention(self):
         print('  Searching mentions...')
         for mention in self.api.mentions_timeline():
             if any(t in mention.text.lower() for t in self.listen) \
