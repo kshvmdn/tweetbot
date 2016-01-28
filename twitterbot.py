@@ -13,12 +13,19 @@ class TwitterBot:
     def tweet(self, message, mention_id=None):
         self.api.update_status(status=message, in_reply_to_status_id=mention_id)
 
-    def respond(self, mention_text, message):
-        for mention in self.api.mentions_timeline(count=1):
-            if mention_text in mention.text.lower():
-                self.tweet(message.format(mention.user.screen_name), mention.id)
-                self.api.create_favorite(mention.id)
-                print('Responded to {0}.'.format(mention.user.screen_name))
+    def respond_to_mention(self):
+        print('  Searching mentions...')
+        for mention in self.api.mentions_timeline():
+            if self.listen in mention.text.lower() and mention.id not in self.responded_tweets:
+                print('    Found tweet - {}'.format(mention.text))
+                try:
+                    self.tweet(self.response.format(mention.user.screen_name), mention.id)
+                    self.api.create_favorite(mention.id)
+                    print('      Responded to {}'.format(mention.user.screen_name))
+                except tweepy.TweepError:
+                    print('      Already responded')
+                self.responded_tweets.add(mention.id)
+                time.sleep(5)
 
 if __name__ == '__main__':
     tb = TwitterBot()
