@@ -3,11 +3,14 @@ import time
 
 
 class TwitterBot:
-    def __init__(self, config, listen_msg, response_msg):
-        auth = tweepy.OAuthHandler(config['consumer_key'], config['consumer_secret'])
-        auth.set_access_token(config['access_token'], config['access_token_secret'])
+    def __init__(self, twitter_auth, listen_msg, response_msg):
+
+        auth = tweepy.OAuthHandler(twitter_auth['consumer_key'],
+                                   twitter_auth['consumer_secret'])
+        auth.set_access_token(twitter_auth['access_token'],
+                              twitter_auth['access_token_secret'])
         self.api = tweepy.API(auth)
-        self.responded_tweets = set()
+        self.responded_tweets = []
         self.listen, self.response = listen_msg, response_msg
 
     def tweet(self, message, mention_id=None):
@@ -16,13 +19,15 @@ class TwitterBot:
     def respond_to_mention(self):
         print('  Searching mentions...')
         for mention in self.api.mentions_timeline():
-            if self.listen in mention.text.lower() and mention.id not in self.responded_tweets:
-                print('    Found tweet - {}'.format(mention.text))
+            if self.listen.lower() in mention.text.lower() \
+                    and mention.id not in self.responded_tweets:
+                print('   Found tweet - {}'.format(mention.text))
                 try:
-                    self.tweet(self.response.format(mention.user.screen_name), mention.id)
+                    self.tweet(self.response.format(mention.user.screen_name),
+                               mention.id)
                     self.api.create_favorite(mention.id)
-                    print('      Responded to {}'.format(mention.user.screen_name))
+                    print('    Responded'.format(mention.user.screen_name))
                 except tweepy.TweepError:
-                    print('      Already responded')
-                self.responded_tweets.add(mention.id)
+                    print('    Already responded')
+                self.responded_tweets.append(mention.id)
                 time.sleep(5)

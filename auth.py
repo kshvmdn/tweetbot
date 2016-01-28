@@ -1,4 +1,4 @@
-twtr_auth = {
+twitter_auth = {
     'consumer_key': '',
     'consumer_secret': '',
     'access_token': '',
