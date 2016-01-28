@@ -1,7 +1,7 @@
 import datetime
 import argparse
 
-from kshvmdn import twitter
+from keys import twtr_auth as twitter
 from twitterbot import TwitterBot
 from apscheduler.schedulers.blocking import BlockingScheduler
 

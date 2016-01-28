@@ -1,12 +1,14 @@
 import tweepy
-from keys import *
+import time
 
 
 class TwitterBot:
-    def __init__(self):
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_token, access_token_secret)
+    def __init__(self, auth, listen_msg, response_msg):
+        auth = tweepy.OAuthHandler(auth['consumer_key'], auth['consumer_secret'])
+        auth.set_access_token(auth['access_token'], auth['access_token_secret'])
         self.api = tweepy.API(auth)
+        self.responded_tweets = set()
+        self.listen, self.response = listen_msg, response_msg
 
     def tweet(self, message, mention_id=None):
         self.api.update_status(status=message, mention_id=mention_id)
@@ -18,6 +20,6 @@ class TwitterBot:
                 self.api.create_favorite(mention.id)
                 print('Responded to {0}.'.format(mention.user.screen_name))
 
-if __name__ == "__main__":
-    user = TwitterBot()
-    user.respond('hi', '{0} hey buddy!')
+if __name__ == '__main__':
+    tb = TwitterBot()
+    tb.respond('hi', '{} hey buddy!')
