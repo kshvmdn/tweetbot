@@ -11,7 +11,7 @@ class TwitterBot:
         self.listen, self.response = listen_msg, response_msg
 
     def tweet(self, message, mention_id=None):
-        self.api.update_status(status=message, mention_id=mention_id)
+        self.api.update_status(status=message, in_reply_to_status_id=mention_id)
 
     def respond(self, mention_text, message):
         for mention in self.api.mentions_timeline(count=1):
