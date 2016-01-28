@@ -7,7 +7,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 parser = argparse.ArgumentParser(description='Respond to Twitter mentions.')
 parser.add_argument('-l', '--listen', nargs='+', default='happy birthday',
-                    help='phrase[s] to reply to (separate by space)')
+                    help='phrase(s) to reply to (separate by space)')
 parser.add_argument('-r', '--reply', default='HANDLE thanks!',
                     help='reply text (use HANDLE for user handle)')
 args = parser.parse_args()
