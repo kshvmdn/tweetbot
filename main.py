@@ -22,13 +22,12 @@ def reply():
 
 
 def main():
-    # print('Starting bot...')
-    #
-    # # run once every minute
-    # scheduler = BlockingScheduler()
-    # scheduler.add_job(respond, 'interval', minutes=1)
-    # scheduler.start()
-    respond()
+    print('Starting bot...')
+
+    # run once every minute
+    scheduler = BlockingScheduler()
+    scheduler.add_job(reply, 'interval', minutes=1)
+    scheduler.start()
 
 if __name__ == '__main__':
     main()
