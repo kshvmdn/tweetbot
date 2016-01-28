@@ -1,17 +1,35 @@
-# TwitterBirthdayResponder
-Automatically respond to all 'Happy Birthday' tweets. Built with [Tweepy](http://www.tweepy.org), [APScheduler](https://apscheduler.readthedocs.org/en/latest/).
+# Twitter AutoReply
+Automatically respond to tweets that contain a specific string. Built with [Tweepy](http://www.tweepy.org) and [APScheduler](https://apscheduler.readthedocs.org/en/latest/).
 
-## Usage
+### Usage
 
-**Requirements**: Python 3, a Twitter account (I guess, lol)
+**Requirements**: Python 3
 
-Fork/clone project, install requirements (Python 3).
-```
-$ git clone https://github.com/kshvmdn/TwitterBirthdayResponder.git && pip3 install -r ./requirements.txt
-```
++ Fork/clone project, install requirements.
 
-Setup [Twitter app](https://apps.twitter.com), replace Consumer Key (API Key), Consumer Secret (API Secret), Access Token, Access Token Secret with `consumer_key`, `consumer_secret`, `access_token`, `access_token_secret` in `keys.txt`. **You will likely need to request Access Token + Access Token Secret on the Twitter app.**
+  ```
+  $ git clone https://github.com/kshvmdn/twitter-autoreply.git && cd twitter-autoreply
+  ```
+  
++ Install requirements
 
-Edit `bot.respond('happy birthday', '@{0} thanks!')` [line 12, `respond_to_mention.py`], if you want a personalized response. `{0}` represents the username being responded to.
+  ```
+  $ pip install -r requirements.txt
+  ```
 
-Run `respond_to_mention.py`. This will run once every other minute. Edit `scheduler.add_job(respond, 'interval', minutes=2)` [line 18] to change interval. Get more info in the APScheduler [documentation](https://apscheduler.readthedocs.org/en/latest/).
++ Setup a [Twitter app](https://apps.twitter.com). Place Consumer Key, Consumer Secret, Access Token, Access Token Secret in their respective spots in `auth.py`. **You will likely need to request an Access Token, Access Token Secret on the Twitter app.**
+
++ Run `main.py`. This will run once every minute. 
+  ```
+  optional arguments:
+  -h, --help        show this help message and exit
+  -l , --listen     mention text (default: 'happy birthday')
+  -r , --response   response text (default: 'HANDLE thanks!') [use HANDLE for user handle]
+  
+  examples:
+  $ python3 main.py -l 'GitHub is down!' -r 'Hey HANDLE, we're working on it! Sorry for the inconvenience'
+  ```
+
+### Contribute
+
+This project is completely open source, feel free to open an [issue](https://github.com/kshvmdn/twitter-autoreply/issues) or make a [PR](https://github.com/kshvmdn/twitter-autoreply/pulls). All contributions are welcome! 
