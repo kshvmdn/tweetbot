@@ -3,9 +3,9 @@ import time
 
 
 class TwitterBot:
-    def __init__(self, auth, listen_msg, response_msg):
-        auth = tweepy.OAuthHandler(auth['consumer_key'], auth['consumer_secret'])
-        auth.set_access_token(auth['access_token'], auth['access_token_secret'])
+    def __init__(self, config, listen_msg, response_msg):
+        auth = tweepy.OAuthHandler(config['consumer_key'], config['consumer_secret'])
+        auth.set_access_token(config['access_token'], config['access_token_secret'])
         self.api = tweepy.API(auth)
         self.responded_tweets = set()
         self.listen, self.response = listen_msg, response_msg
@@ -26,7 +26,3 @@ class TwitterBot:
                     print('      Already responded')
                 self.responded_tweets.add(mention.id)
                 time.sleep(5)
-
-if __name__ == '__main__':
-    tb = TwitterBot()
-    tb.respond('hi', '{} hey buddy!')
