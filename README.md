@@ -10,19 +10,17 @@ Automatically respond to tweets that contain a specific string. Built with [Twee
   ```
   $ git clone https://github.com/kshvmdn/twitter-autoreply.git && cd twitter-autoreply
   ```
-  
-  ```
-  $ cp auth.sample.py auth.py
-  ```
-  
-+ Install requirements
 
   ```
   $ pip install -r requirements.txt
   ```
   
-+ Config [Twitter app](https://apps.twitter.com)
-+ Add your keys to `auth.py`. You will need to request an __Access Token__ and __Access Token Secret__
+  ```
+  $ cp auth.sample.py auth.py
+  ```
+  
++ Setup the [Twitter app](https://apps.twitter.com), add your tokens to `auth.py`. You will need to request an __Access Token__ and __Access Token Secret__.
+
 + Run `main.py`. This will reply to new mentions once every minute. 
 
   ```
