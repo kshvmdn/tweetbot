@@ -60,4 +60,4 @@ target/
 .idea/
 
 # Personal Twitter keys
-kshvmdn.py
+auth.py
