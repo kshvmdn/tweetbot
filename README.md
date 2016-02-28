@@ -5,18 +5,17 @@ Automatically respond to tweets that contain a specific string. Built with [Twee
 
 **Requirements**: Python 3
 
-+ Fork/clone project, install requirements
++ Clone, setup project locally
+  ```
+  $ git clone https://github.com/kshvmdn/twitter-autoreply.git && cd twitter-autoreply # clone project
+  ```
 
   ```
-  $ git clone https://github.com/kshvmdn/twitter-autoreply.git && cd twitter-autoreply
-  ```
-
-  ```
-  $ pip install -r requirements.txt
+  $ pip install -r requirements.txt # install Python requirements
   ```
   
   ```
-  $ mv auth.sample.py auth.py
+  $ mv auth.sample.py auth.py # rename auth.sample.py
   ```
   
 + Setup the [Twitter app](https://apps.twitter.com), add your tokens (all 4) to `auth.py`. You will need to request an __Access Token__ and __Access Token Secret__.
@@ -25,13 +24,13 @@ Automatically respond to tweets that contain a specific string. Built with [Twee
 
   ```
   optional arguments:
-  -h, --help        show this help message and exit
-  -l, --listen     phrase(s) to listen for and reply to (default: 'happy birthday')
-  -r, --response   reply text (default: 'HANDLE thanks!') [use HANDLE for user handle]
+    -h, --help        show this help message and exit
+    -l, --listen      phrase(s) to listen for and reply to (default=['happy birthday'])
+    -r, --reply       reply text (default='HANDLE thanks!') [use HANDLE for user handle]
   
   examples:
-  $ python3 main.py -l 'GitHub is down!' -r 'Hey HANDLE, we're working on it! Sorry for the inconvenience'
-  $ python3 main.py -l 'happy birthday' 'hbd' 'happy bday!'  # response will default to 'HANDLE thanks!'
+    $ python3 main.py -l 'GitHub is down!' -r 'Hey HANDLE, we're working on it! Sorry for the inconvenience!'
+    $ python3 main.py -l 'happy birthday' 'hbd' 'happy bday!'  # response will default to 'HANDLE thanks!'
   ```
 
 ### Contribute
