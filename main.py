@@ -1,4 +1,3 @@
-import sys
 import datetime
 import argparse
 
@@ -6,7 +5,9 @@ from auth import twitter_auth as auth
 from twitterbot import TwitterBot
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-parser = argparse.ArgumentParser(description='Respond to Twitter mentions.')
+parser = argparse.ArgumentParser(description='Respond to Twitter mentions.',
+                                 epilog='example: main.py -l "happy birthday" \
+                                         "hbd" -r "thanks HANDLE!"')
 parser.add_argument('-l', '--listen', nargs='+', default=['happy birthday'],
                     help='phrase(s) to reply to (separate by space)')
 parser.add_argument('-r', '--reply', default='HANDLE thanks!',
