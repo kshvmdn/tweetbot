@@ -12,7 +12,7 @@ parser.add_argument('-r', '--reply', default='HANDLE thanks!',
                     help='reply text (use HANDLE for user handle)')
 args = parser.parse_args()
 
-bot = TwitterBot(auth, args.listen, args.response.replace('HANDLE', '@{}'))
+bot = TwitterBot(auth, args.listen, args.reply.replace('HANDLE', '@{}'))
 
 
 def reply():
