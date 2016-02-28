@@ -16,10 +16,10 @@ Automatically respond to tweets that contain a specific string. Built with [Twee
   ```
   
   ```
-  $ cp auth.sample.py auth.py
+  $ mv auth.sample.py auth.py
   ```
   
-+ Setup the [Twitter app](https://apps.twitter.com), add your tokens to `auth.py`. You will need to request an __Access Token__ and __Access Token Secret__.
++ Setup the [Twitter app](https://apps.twitter.com), add your tokens (all 4) to `auth.py`. You will need to request an __Access Token__ and __Access Token Secret__.
 
 + Run `main.py`. This will reply to new mentions once every minute. 
 
