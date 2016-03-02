@@ -13,8 +13,8 @@ class TwitterBot:
         self.responded_tweets = []
         self.listen, self.response = listen_list, response_msg
 
-    def tweet(self, message, mention_id=None):
-        self.api.update_status(status=message, in_reply_to_status_id=mention_id)
+    def tweet(self, msg, mention_id=None):
+        self.api.update_status(status=msg, in_reply_to_status_id=mention_id)
 
     def reply_to_mention(self):
         print('  Searching mentions...')
