@@ -26,7 +26,7 @@ class TwitterBot:
                     self.tweet(self.response.format(mention.user.screen_name),
                                mention.id)
                     self.api.create_favorite(mention.id)
-                    print('    Responded'.format(mention.user.screen_name))
+                    print('    Responded to {}'.format(mention.user.screen_name))
                 except tweepy.TweepError:
                     print('    Already responded')
                 self.responded_tweets.append(mention.id)
