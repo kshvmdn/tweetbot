@@ -1,5 +1,5 @@
-# Twitter AutoReply
-Automatically respond to tweets that contain a specific string. Built with [Tweepy](http://www.tweepy.org) and [APScheduler](https://apscheduler.readthedocs.org/en/latest/).
+# Tweetbot
+Automatically respond to tweets that contain a specific string. Built with [Tweepy](http://www.tweepy.org).
 
 ### Usage
 
@@ -35,4 +35,4 @@ Automatically respond to tweets that contain a specific string. Built with [Twee
 
 ### Contribute
 
-This project is completely open source, feel free to open an [issue](https://github.com/kshvmdn/twitter-autoreply/issues) or make a [PR](https://github.com/kshvmdn/twitter-autoreply/pulls). All contributions are welcome! 
+This project is completely open source, feel free to open an [issue](https://github.com/kshvmdn/tweetbot/issues) or make a [PR](https://github.com/kshvmdn/tweetbot/pulls). All contributions are welcome! 
